@@ -1,0 +1,15 @@
+#tooltip {
+    text-align: left;
+    padding: 1px;
+    background-color: lightgray;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: auto;
+    opacity: 0;
+    color: black;
+    position: absolute;
+}
+
+#cases {
+    padding: 0px;
+}

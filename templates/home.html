@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body_class %}onboarding{% endblock %}
+
+{% block content %}
+
+<div id='container' class="row justify-content-md-center">
+    <div class="col-md-7 col-lg-5">
+        <h2 class="join-message p-2 text-center">Covid Charts</h2>
+        {% for location in g.user.locations %}
+        <div class="location">{{ location.name }}</div>
+        {% endfor %}
+    </div>
+    {% for location in g.user.locations %}
+    <div class="bar-chart">
+    <svg id ={{ location.name.replace(' ','').replace('.','') }} height="600" width = "1000" padding="10"> </svg>
+    </div>
+    {% endfor %}
+    <div id="tooltip">
+        <p id="cases" class="info font-weight-bold m-0"></p>
+        <p id="date" class="m-0"></p>
+    </div>
+</div>
+
+
+{% endblock %}

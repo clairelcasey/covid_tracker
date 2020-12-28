@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Covid Tracker</title>
+
+  <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  <script src="https://unpkg.com/jquery"></script>
+  <!-- <script src="https://unpkg.com/popper"></script> -->
+  <script src="https://unpkg.com/bootstrap"></script>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <!-- <link rel="stylesheet" href="/static/stylesheets/style.css"> -->
+  <!-- <link rel="shortcut icon" href="/static/favicon.ico"> -->
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">
+        <!-- <img src="/static/images/warbler-logo.png" alt="logo"> -->
+        <span>Covid Tracker</span>
+      </a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      {% if not g.user %}
+        <li class="nav-item"><a href="/signup" class='av-link'>Sign up</a></li>
+        <li class="nav-item"><a href="/login" class='nav-link'>Log in</a></li>
+      {% else %}
+        <li class="nav-item">
+        <a href="/locations/add" class='nav-link'>Add a Tracker</a>
+
+        </li class="nav-item">
+        <form class="nav-item" action="/logout" method="POST">
+          {{ g.UserLogoutForm.hidden_tag() }}
+          <li class="nav-item"><button class="btn btn-link border-0 nav-link" href="/logout">Log out</button></li>
+        </form>
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% for category, message in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+  {% endfor %}
+
+  {% block content %}
+  {% endblock %}
+
+</div>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="/static/script.js"></script>
+</body>
+</html>
