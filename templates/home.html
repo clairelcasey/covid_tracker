@@ -5,22 +5,44 @@
 {% block content %}
 
 <div id='container' class="row justify-content-md-center">
-    <div class="col-md-7 col-lg-5">
-        <h2 class="join-message p-2 text-center">Covid Charts</h2>
-        {% for location in g.user.locations %}
-        <div class="location">{{ location.name }}</div>
-        {% endfor %}
+    <div class="row">
+        {% if g.user.locations|length != 0 %}
+        <div id="county-legend" class="col-2 position-fixed ">
+            <h2 class="join-message p-2 text-center">Covid Charts</h2>
+            <div id="myScroll" class="list-group-flush">
+                {% for location in g.user.locations %}
+                <a class="list-group-item list-group-item-action location"
+                    href="#head-{{ location.name.replace('. ','') }}">
+                    {{ location.name }}
+                </a>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div id="charts" class="scrollspy-example col col-lg-2 " data-spy="scroll" data-target="#myScroll"
+            data-offset="0">
+            {% for location in g.user.locations %}
+            <div id="head-{{ location.name.replace('. ','') }}" class="bar-chart">
+                <svg id={{ location.name.replace('. ','') }} height="600" width="1000" padding="10">
+                </svg>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if g.user.locations|length == 0 %}
+        <div class="p-5">
+            <a href="/locations/add" class="list-group-item list-group-item-action">Add a tracker!</a>
+        </div>
+        {% endif %}
+
     </div>
-    {% for location in g.user.locations %}
-    <div class="bar-chart">
-    <svg id ={{ location.name.replace(' ','').replace('.','') }} height="600" width = "1000" padding="10"> </svg>
-    </div>
-    {% endfor %}
     <div id="tooltip">
         <p id="cases" class="info font-weight-bold m-0"></p>
         <p id="date" class="m-0"></p>
     </div>
 </div>
+
 
 
 {% endblock %}

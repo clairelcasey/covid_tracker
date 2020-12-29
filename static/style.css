@@ -13,3 +13,17 @@
 #cases {
     padding: 0px;
 }
+
+#county-legend {
+    left:10px;
+    top:60px;
+}
+
+#charts {
+    margin-left: 200px;
+    margin-top: 30px;
+}
+
+.margin-top {
+    margin-top: 100px;
+}
