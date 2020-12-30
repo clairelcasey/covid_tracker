@@ -11,10 +11,16 @@
             <h2 class="join-message p-2 text-center">Covid Charts</h2>
             <div id="myScroll" class="list-group-flush">
                 {% for location in g.user.locations %}
-                <a class="list-group-item list-group-item-action location"
-                    href="#head-{{ location.name.replace('. ','') }}">
+                <a class="border-bottom-0 pb-0 pt-1 list-group-item list-group-item-action location"
+                href="#head-{{ location.name.replace('. ','') }}">
                     {{ location.name }}
+                    <!-- <button class="xs" href="">Remove</button> -->
                 </a>
+                <form 
+                    method="POST" 
+                    action="/locations/stop-following/{{ location.id }}">
+                    <button class=" remove pt-0 btn btn-sm">Remove</button>
+                </form>
                 {% endfor %}
 
             </div>
@@ -42,7 +48,6 @@
         <p id="date" class="m-0"></p>
     </div>
 </div>
-
 
 
 {% endblock %}

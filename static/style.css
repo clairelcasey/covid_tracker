@@ -27,3 +27,36 @@
 .margin-top {
     margin-top: 100px;
 }
+
+.list-group-item.active {
+    background-color: #fff;
+    color: #495057;
+    border-color: rgba(0,0,0,.125);    
+    font-weight: bold;
+}
+
+.list-group-item.active:hover {
+    background-color: #fff;
+    color: #495057;
+    border-color: rgba(0,0,0,.125);    
+    font-weight: bold;
+}
+
+
+.xs {
+    font-size:xx-small;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.remove {
+    padding-left: 22px;
+    font-size: 11px;
+}
+
+.remove:hover {
+    font-weight: bold;
+}

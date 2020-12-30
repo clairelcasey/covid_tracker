@@ -8,27 +8,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <!-- <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css"> -->
   <script src="https://unpkg.com/jquery"></script>
-  <!-- <script src="https://unpkg.com/popper"></script> -->
-  <!-- <script src="https://unpkg.com/bootstrap"></script> -->
   <link rel="stylesheet" href="/static/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <!-- <link rel="stylesheet" href="/static/stylesheets/style.css"> -->
-  <!-- <link rel="shortcut icon" href="/static/favicon.ico"> -->
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
 
-  <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand navbar-light bg-light fixed-top pt-0 pb-0">
     <div class="container-fluid">
 
       <div class="navbar-header">
-        <a href="/" class="navbar-brand">
-          <!-- <img src="/static/images/warbler-logo.png" alt="logo"> -->
-          <span>Covid Tracker</span>
+        <a href="/" class="navbar-brand p-0">
+          <span class="small">Covid Tracker</span>
         </a>
+          <hr >
+          <span class="text-muted xs">Data from the
+            <a class = "xs text-muted" href="https://dev.socrata.com/foundry/health.data.ny.gov/xdss-u53e">New York State Department API</a>
+             </span>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
@@ -51,7 +48,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+  <div id="main-container" class="container-fluid">
 
     {% for category, message in get_flashed_messages(with_categories=True) %}
     <div class="alert alert-{{ category }}">{{ message }}</div>
@@ -62,13 +59,7 @@
 
   </div>
 
-  <!-- <nav class="navbar navbar-expand navbar-light bg-light justify-content-end">
-
-    <div class="nav-header">
-        <span>Cases from</span>
-      </a>
-    </div>
-  </nav> -->
+  
 
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

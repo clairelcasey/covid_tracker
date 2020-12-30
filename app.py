@@ -141,7 +141,7 @@ def homepage():
 ##############################################################################
 # General location routes:
 
-@app.route('/locations/add', methods=["POST", "GET"])
+@app.route('/locations/add', methods=["GET", "POST"])
 def location_add():
     """ Add a location. """
 
@@ -163,3 +163,16 @@ def location_add():
 
     return render_template('locations/add.html', form=form)
 
+@app.route('/locations/stop-following/<int:location_id>', methods=["POST"])
+def stop_following(location_id):
+    """ Remove a location """
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    followed_location = Location.query.get(location_id)
+    g.user.locations.remove(followed_location)
+    db.session.commit()
+
+    return redirect("/")

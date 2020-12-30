@@ -73,7 +73,9 @@ function createChart(data) {
     })
     .on('mouseout', function () {
       d3.select(this)
-        .style('opacity', 0.5)
+        .style('opacity', 0.5);
+      d3.select('#tooltip')
+        .style('opacity', 0);
     })
 
   addLabels(svg, height, margin, width, data)
@@ -116,3 +118,7 @@ async function start() {
 }
 
 $(start);
+
+
+// add scrollspy to county legend
+$('body').scrollspy({ target: '#county-legend' })
